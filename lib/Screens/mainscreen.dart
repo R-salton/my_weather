@@ -16,6 +16,8 @@ class _MainScreenState extends State<MainScreen> {
   String comment = "You Weather";
   int temperature = 0;
   String cityName = "Your Location";
+  int hummidity = 0;
+  int windSpeeed = 0;
 
   final time = DateTime.now();
 
@@ -32,6 +34,9 @@ class _MainScreenState extends State<MainScreen> {
     comment = locationWeather["weather"][0]["description"];
     temperature = (locationWeather["main"]["temp"]).toInt();
     cityName = locationWeather["name"];
+    hummidity = (locationWeather["main"]["humidity"]).toInt();
+    windSpeeed = (locationWeather["wind"]["speed"]).toInput(); 
+
   }
 
   @override
@@ -106,12 +111,12 @@ class _MainScreenState extends State<MainScreen> {
                         comment: "Precipitation",
                       ),
                       weatherWithImage(
-                        data: "23°",
+                        data: "$hummidity°",
                         comment: "Hummidity",
                         imageUrl: "assets/icons/drop.png",
                       ),
                       weatherWithImage(
-                        data: "9km/h",
+                        data: "$windSpeeed/h",
                         comment: "Wind speed",
                         imageUrl: "assets/icons/wind.png",
                       )
