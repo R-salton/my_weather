@@ -1,4 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:my_weather/utilities/constants.dart';
+
+class TopMenu extends StatelessWidget {
+  TopMenu(
+      {super.key,
+      this.leftIcon,
+      this.rightIcon,
+      this.title,
+      this.iconColors,
+      required this.onClick});
+
+  String? leftIcon = "assets/icons/menu1.png";
+  Icon? rightIcon = const Icon(Icons.refresh);
+  String? title = "";
+  Color? iconColors = kDarkContainerColor;
+  final void Function() onClick;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: () {
+              onClick(); // Call the onClick function if it's not null
+            },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: iconColors,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Image(
+                  image: AssetImage("$leftIcon"),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          Text(
+            "$title",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 17,
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: iconColors,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child:
+                Padding(padding: const EdgeInsets.all(5.0), child: rightIcon),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class MyContainer extends StatelessWidget {
   MyContainer(
@@ -28,7 +94,8 @@ class MyContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-          padding: EdgeInsets.only(left: left, right: right, top: paddingTop ?? 25.0),
+          padding: EdgeInsets.only(
+              left: left, right: right, top: paddingTop ?? 25.0),
           child: child),
     );
   }

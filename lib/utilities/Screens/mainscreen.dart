@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_weather/utilities/Screens/weatherDetail.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
 
@@ -21,51 +22,15 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.only(left: 18.0, top: 18.0, right: 18.0),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: kDarkContainerColor,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Image(
-                            image: AssetImage("assets/icons/menu1.png"),
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      const Text(
-                        "Sunny Day",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: kDarkContainerColor,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Icon(
-                            Icons.refresh,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
+                TopMenu(
+                  onClick: () {},
+                  leftIcon: "assets/icons/menu1.png",
+                  rightIcon: const Icon(
+                    Icons.refresh,
+                    color: Colors.white,
                   ),
+                  iconColors: kDarkContainerColor,
+                  title: "Kigali",
                 ),
                 const SizedBox(
                   height: 20,
@@ -133,15 +98,25 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Today?", style: kSubTitleStyle),
-                      Text(
-                        "7 Days Forecast",
-                        style: kSubTitleStyle,
+                      const Text("Today?", style: kSubTitleStyle),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return const WeatherDetail();
+                            }),
+                          );
+                        },
+                        child: const Text(
+                          "7 Days Forecast",
+                          style: kSubTitleStyle,
+                        ),
                       ),
                     ],
                   ),
