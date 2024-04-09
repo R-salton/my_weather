@@ -162,8 +162,8 @@ class _WeatherDetailState extends State<WeatherDetail> {
                       height: 10,
                     ),
                     WeeklyForecast(
-                      comment: "Clouds",
-                      iconImage: "assets/icons/cloud.png",
+                      comment: "Sunny",
+                      iconImage: "assets/icons/sunny.png",
                       tempDown: 12,
                       temperature: 8,
                       day: "Thursday",
@@ -239,7 +239,7 @@ class WeeklyForecast extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 4,
             child: Container(
               padding: const EdgeInsets.only(left: 15, right: 15),
               decoration:
@@ -251,6 +251,7 @@ class WeeklyForecast extends StatelessWidget {
                   Image(
                     image: AssetImage("$iconImage"),
                     height: 50,
+                    width: 50,
                   ),
                   const SizedBox(
                     width: 5,
@@ -270,15 +271,16 @@ class WeeklyForecast extends StatelessWidget {
             width: 10,
           ),
           Expanded(
-            flex: 1,
             child: Text(
               "+$temperature°",
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
+          const SizedBox(
+            width: 10,
+          ),
           Expanded(
-            flex: 1,
             child: Text(
               "-$tempDown°",
               style: const TextStyle(

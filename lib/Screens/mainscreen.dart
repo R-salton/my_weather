@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_weather/utilities/Screens/weatherDetail.dart';
+import 'package:my_weather/Screens/weatherDetail.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -11,6 +12,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GetLoaction();
+  }
+  void GetLoaction() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low);
+    print(position.longitude);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
