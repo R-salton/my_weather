@@ -2,27 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:my_weather/Screens/weatherDetail.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:my_weather/utilities/weatherInfos.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key, this.weatherData});
 
+  final weatherData;
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  String comment = "You Weather";
+  int temperature = 0;
+  String cityName = "Your Location";
+
+  final time = DateTime.now();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    GetLoaction();
+    updateUI(widget.weatherData);
+    // print(widget.weatherData);
+    print(time.year);
   }
-  void GetLoaction() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    print(position.longitude);
+
+  void updateUI(dynamic locationWeather) {
+    comment = locationWeather["weather"][0]["description"];
+    temperature = (locationWeather["main"]["temp"]).toInt();
+    cityName = locationWeather["name"];
   }
 
   @override
@@ -44,25 +53,25 @@ class _MainScreenState extends State<MainScreen> {
                     color: Colors.white,
                   ),
                   iconColors: kDarkContainerColor,
-                  title: "Kigali",
+                  title: cityName,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  "Mostly Sunny",
-                  style: TextStyle(color: Colors.white),
+                Text(
+                  comment,
+                  style: const TextStyle(color: Colors.white),
                 ),
-                const Stack(
+                Stack(
                   children: [
                     Text(
-                      "23°",
-                      style: TextStyle(
+                      "$temperature°",
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 130,
                           fontWeight: FontWeight.bold),
                     ),
-                    Opacity(
+                    const Opacity(
                       opacity: 0.7,
                       child: Padding(
                         padding: EdgeInsets.only(left: 80.0, top: 80.0),
@@ -76,9 +85,9 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Monaday 8, April | 17:28",
-                  style: TextStyle(color: Colors.white),
+                Text(
+                  "${getDay(time.weekday)} ${time.day}, ${time.month}, ${time.year} | ${time.hour}:${time.minute}",
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 20,
