@@ -18,6 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   String cityName = "Your Location";
   int hummidity = 0;
   int windSpeeed = 0;
+  dynamic weatherData;
 
   final time = DateTime.now();
 
@@ -27,6 +28,7 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     updateUI(widget.weatherData);
     // print(widget.weatherData);
+    weatherData = widget.weatherData;
     print(time.year);
   }
 
@@ -137,7 +139,7 @@ class _MainScreenState extends State<MainScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return const WeatherDetail();
+                              return WeatherDetail(weatherData: weatherData,);
                             }),
                           );
                         },

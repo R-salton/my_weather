@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
+import 'package:my_weather/utilities/weatherInfos.dart';
+import 'package:my_weather/utilities/weeklyData.dart';
 
 class WeatherDetail extends StatefulWidget {
-  const WeatherDetail({super.key});
+  WeatherDetail({super.key, this.weatherData});
+  dynamic weatherData;
 
   @override
   State<WeatherDetail> createState() => _WeatherDetailState();
 }
 
 class _WeatherDetailState extends State<WeatherDetail> {
+  dynamic weatherData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    print(widget.weatherData);
+    weatherData = widget.weatherData;
+  }
+
   @override
   Widget build(BuildContext context) {
+    WeeklyData weeklyData = WeeklyData();
+    int day = DateTime.parse("2024-04-11T00:00:00+02:00").weekday;
+    String weeklyDay = getDay(day);
+  
+
     return Scaffold(
       backgroundColor: kDarkContainerColor,
       body: SafeArea(
@@ -129,69 +148,69 @@ class _WeatherDetailState extends State<WeatherDetail> {
               ),
               MyContainer(
                 paddingTop: 10,
-                child: const Column(
+                child: Column(
                   children: [
                     WeeklyForecast(
                       comment: "Raining",
                       iconImage: "assets/icons/raining.png",
                       tempDown: 19,
                       temperature: 18,
-                      day: "Monday",
+                      day: weeklyDay,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
                       temperature: 19,
                       day: "Tuesday",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Cloudy",
                       iconImage: "assets/icons/cloudy.png",
                       tempDown: 10,
                       temperature: 15,
                       day: "Wednesday",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 12,
                       temperature: 8,
                       day: "Thursday",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Raining",
                       iconImage: "assets/icons/raining.png",
                       tempDown: 6,
                       temperature: 12,
                       day: "Friday",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
                       temperature: 19,
                       day: "Tuesday",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    WeeklyForecast(
+                    const WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
