@@ -15,22 +15,30 @@ class WeatherDetail extends StatefulWidget {
 class _WeatherDetailState extends State<WeatherDetail> {
   dynamic weatherData;
 
+  dynamic day1;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    print(widget.weatherData);
+    // print(widget.weatherData);
     weatherData = widget.weatherData;
+    updateUI(weatherData);
+    int day =
+        DateTime.parse("${weatherData["location"]["values"][0]["datetimeStr"]}")
+            .weekday;
+    print(day);
+  }
+
+  void updateUI(dynamic weatherData) {
+    WeeklyData weeklyData = WeeklyData();
+    day1 = weeklyData.day1(weatherData);
   }
 
   @override
   Widget build(BuildContext context) {
-    WeeklyData weeklyData = WeeklyData();
-    int day = DateTime.parse("2024-04-11T00:00:00+02:00").weekday;
-    String weeklyDay = getDay(day);
-  
-
+    print(day1);
     return Scaffold(
       backgroundColor: kDarkContainerColor,
       body: SafeArea(
@@ -148,69 +156,69 @@ class _WeatherDetailState extends State<WeatherDetail> {
               ),
               MyContainer(
                 paddingTop: 10,
-                child: Column(
+                child: const Column(
                   children: [
                     WeeklyForecast(
                       comment: "Raining",
                       iconImage: "assets/icons/raining.png",
                       tempDown: 19,
                       temperature: 18,
-                      day: weeklyDay,
+                      day: "Mona",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
                       temperature: 19,
                       day: "Tuesday",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Cloudy",
                       iconImage: "assets/icons/cloudy.png",
                       tempDown: 10,
                       temperature: 15,
                       day: "Wednesday",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 12,
                       temperature: 8,
                       day: "Thursday",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Raining",
                       iconImage: "assets/icons/raining.png",
                       tempDown: 6,
                       temperature: 12,
                       day: "Friday",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
                       temperature: 19,
                       day: "Tuesday",
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const WeeklyForecast(
+                    WeeklyForecast(
                       comment: "Sunny",
                       iconImage: "assets/icons/sunny.png",
                       tempDown: 6,
