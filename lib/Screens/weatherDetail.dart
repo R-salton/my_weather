@@ -24,16 +24,18 @@ class _WeatherDetailState extends State<WeatherDetail> {
 
     // print(widget.weatherData);
     weatherData = widget.weatherData;
-    updateUI(weatherData);
-    int day =
-        DateTime.parse("${weatherData["location"]["values"][0]["datetimeStr"]}")
-            .weekday;
-    print(day);
+
+    // int day =
+    //     DateTime.parse(weatherData["location"]["values"][0]["datetimeStr"])
+    //         .weekday;
+    // print(weatherData);
+    updateUI(widget.weatherData);
+    // print(day);
   }
 
-  void updateUI(dynamic weatherData) {
-    WeeklyData weeklyData = WeeklyData();
-    day1 = weeklyData.day1(weatherData);
+  void updateUI(dynamic weatherInfo) {
+    WeeklyData weeklydata = WeeklyData(weatherData: weatherData);
+    day1 = weeklydata.day1();
   }
 
   @override

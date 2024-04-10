@@ -41,7 +41,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     String url = "$openWeathermapUrl$latitude,$longtude&forecastDays=7&key=$apiKey";
 
     var weatherData = await weatherBrain.getCurrentWeather(url);
-    print(weatherData);
+    // print(weatherData);
 
     // ignore: use_build_context_synchronously
     Navigator.push(
