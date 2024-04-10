@@ -31,12 +31,12 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void updateUI(dynamic locationWeather) {
-    comment = locationWeather["weather"][0]["description"];
-    temperature = (locationWeather["main"]["temp"]).toInt();
-    cityName = locationWeather["name"];
-    hummidity = (locationWeather["main"]["humidity"]).toInt();
-    windSpeeed = (locationWeather["wind"]["speed"]).toInput(); 
+    comment = locationWeather["location"]["values"][0]["conditions"];
+   temperature = (locationWeather["location"]["currentConditions"]["temp"]).toInt();
+    // cityName = locationWeather["name"];
 
+     hummidity = (locationWeather["location"]["currentConditions"]["humidity"]).toInt();
+    windSpeeed = (locationWeather["location"]["currentConditions"]["wspd"]).toInt();
   }
 
   @override

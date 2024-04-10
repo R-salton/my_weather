@@ -5,8 +5,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_weather/utilities/Weather.dart';
 
-const apiKey = "9f5aef89485cbeed52640c1491e5ca2c";
-const openWeathermapUrl = "https://api.openweathermap.org/data/2.5/weather";
+const apiKey = "VJCWKL7CVRHRMR3PLPTNZDMKF";
+const openWeathermapUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?iconSet=icons1&aggregateHours=24&combinationMethod=aggregate&shortColumnNames=true&contentType=json&unitGroup=metric&locationMode=single&locations=";
+
+// -1.9508938,30.0588764&forecastDays=7&key=VJCWKL7CVRHRMR3PLPTNZDMKF
+
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/38.9697,-77.385?key=VJCWKL7CVRHRMR3PLPTNZDMKF
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -34,9 +38,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     desiredAccuracy: LocationAccuracy.low);
     longtude = position.longitude;
     latitude = position.latitude;
-    String url = "$openWeathermapUrl?lat=$latitude&lon=$longtude&appid=$apiKey&units=metric";
+    String url = "$openWeathermapUrl$latitude,$longtude&forecastDays=7&key=$apiKey";
 
     var weatherData = await weatherBrain.getCurrentWeather(url);
+    print(weatherData);
 
     // ignore: use_build_context_synchronously
     Navigator.push(
