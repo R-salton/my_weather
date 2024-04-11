@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
@@ -5,8 +7,9 @@ import 'package:my_weather/utilities/weatherInfos.dart';
 import 'package:my_weather/utilities/weeklyData.dart';
 
 class WeatherDetail extends StatefulWidget {
-  WeatherDetail({super.key, this.weatherData});
-  dynamic weatherData;
+  WeatherDetail({super.key, this.day1, this.day2});
+  dynamic day1;
+  dynamic day2;
 
   @override
   State<WeatherDetail> createState() => _WeatherDetailState();
@@ -16,31 +19,22 @@ class _WeatherDetailState extends State<WeatherDetail> {
   dynamic weatherData;
 
   dynamic day1;
+  dynamic day2;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    // print(widget.weatherData);
-    weatherData = widget.weatherData;
+    day1 = widget.day1;
+    day2 = widget.day2;
 
-    // int day =
-    //     DateTime.parse(weatherData["location"]["values"][0]["datetimeStr"])
-    //         .weekday;
-    // print(weatherData);
-    updateUI(widget.weatherData);
-    // print(day);
-  }
-
-  void updateUI(dynamic weatherInfo) {
-    WeeklyData weeklydata = WeeklyData(weatherData: weatherData);
-    day1 = weeklydata.day1();
+    print(day1);
+    print(day2);
   }
 
   @override
   Widget build(BuildContext context) {
-    print(day1);
     return Scaffold(
       backgroundColor: kDarkContainerColor,
       body: SafeArea(
@@ -74,11 +68,11 @@ class _WeatherDetailState extends State<WeatherDetail> {
                 bgColor: kLightContainerColor,
                 child: Column(
                   children: [
-                    const Stack(
+                    Stack(
                       children: [
                         Row(
                           children: [
-                            Image(
+                            const Image(
                               image: AssetImage(
                                 "assets/icons/cloudy.png",
                               ),
@@ -86,17 +80,17 @@ class _WeatherDetailState extends State<WeatherDetail> {
                             ),
                             Column(
                               children: [
-                                Text(
+                                const Text(
                                   "Tomorrow",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 16),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
-                                  "Mostly Cloudy",
-                                  style: TextStyle(
+                                  day2['condition'],
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
@@ -106,16 +100,16 @@ class _WeatherDetailState extends State<WeatherDetail> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 50, top: 80),
+                          padding: const EdgeInsets.only(left: 50, top: 80),
                           child: Text(
-                            "19°",
-                            style: TextStyle(
+                            "${day2["temp"].toInt()}°",
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 70,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 130, top: 120),
                           child: Text(
                             "/15°",

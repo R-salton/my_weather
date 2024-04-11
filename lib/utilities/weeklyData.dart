@@ -1,5 +1,3 @@
-import 'package:my_weather/utilities/weatherInfos.dart';
-
 class WeeklyData {
   WeeklyData({required this.weatherData});
   dynamic weatherData;
@@ -8,25 +6,32 @@ class WeeklyData {
   int? minTemperature;
   int? maxTemperature;
 
-// location.values[0].maxt
-// location.values[0].mint
-// location.values[0].conditions
+  Future<Map<String, dynamic>> day1() async {
 
-  Future<List<dynamic>> day1() async {
-    // int day =
-    //     DateTime.parse("${weatherData["location"]["values"][0]["datetimeStr"]}")
-    //         .weekday;
-    // print(day);
+    Map <String, dynamic> data = {
+      "minTemperature" : (weatherData["location"]["values"][0]["mint"]).toInt(),
+      "maxTemperature" :(weatherData["location"]["values"][0]["maxt"]).toInt(),
+      "condition" :weatherData["location"]["values"][0]["conditions"],
+      "weekDay" : weatherData["location"]["values"][0]["datetimeStr"],
+      "temp" : weatherData["location"]["values"][0]["temp"]
+    };
+    // print(data);
 
-    // weekDay = weatherData["location"]["values"][0]["datetimeStr"];
-    // condition = weatherData["location"]["values"][0]["condition"];
-   
-    List <dynamic>data = [
- minTemperature = weatherData["location"]["values"][0]["mint"],
-    maxTemperature = weatherData["location"]["values"][0]["maxt"]
-    ];
+    return data;
+  }
 
-   
+  Future<Map<String, dynamic>> day2() async {
+    Map<String, dynamic> data = {
+      "minTemperature": (weatherData["location"]["values"][1]["mint"]).toInt(),
+      "maxTemperature": (weatherData["location"]["values"][1]["maxt"]).toInt(),
+      "condition": weatherData["location"]["values"][1]["conditions"],
+      "weekDay": weatherData["location"]["values"][1]["datetimeStr"],
+      "temp": weatherData["location"]["values"][1]["temp"]
+
+
+    };
+    // print(data);
+
     return data;
   }
 }

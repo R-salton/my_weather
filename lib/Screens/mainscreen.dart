@@ -5,9 +5,11 @@ import 'package:my_weather/utilities/custom_widgets.dart';
 import 'package:my_weather/utilities/weatherInfos.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, this.weatherData});
+  const MainScreen({super.key, this.weatherData, this.day1, this.day2});
 
   final weatherData;
+  final day1;
+  final day2;
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -19,6 +21,8 @@ class _MainScreenState extends State<MainScreen> {
   int hummidity = 0;
   int windSpeeed = 0;
   dynamic weatherData;
+  dynamic day_1Data;
+  dynamic day_2Data;
 
   final time = DateTime.now();
 
@@ -29,16 +33,21 @@ class _MainScreenState extends State<MainScreen> {
     updateUI(widget.weatherData);
     // print(widget.weatherData);
     weatherData = widget.weatherData;
+    day_1Data = widget.day1;
+    day_2Data = widget.day2;
     print(time.year);
   }
 
   void updateUI(dynamic locationWeather) {
     comment = locationWeather["location"]["values"][0]["conditions"];
-   temperature = (locationWeather["location"]["currentConditions"]["temp"]).toInt();
+    temperature =
+        (locationWeather["location"]["currentConditions"]["temp"]).toInt();
     // cityName = locationWeather["name"];
 
-     hummidity = (locationWeather["location"]["currentConditions"]["humidity"]).toInt();
-    windSpeeed = (locationWeather["location"]["currentConditions"]["wspd"]).toInt();
+    hummidity =
+        (locationWeather["location"]["currentConditions"]["humidity"]).toInt();
+    windSpeeed =
+        (locationWeather["location"]["currentConditions"]["wspd"]).toInt();
   }
 
   @override
@@ -139,7 +148,10 @@ class _MainScreenState extends State<MainScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return WeatherDetail(weatherData: weatherData,);
+                              return WeatherDetail(
+                                day1: day_1Data,
+                                day2: day_2Data,
+                              );
                             }),
                           );
                         },
