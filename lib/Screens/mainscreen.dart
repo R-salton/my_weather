@@ -20,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   String cityName = "Your Location";
   int hummidity = 0;
   int windSpeeed = 0;
+  String weatherIcon = "";
   dynamic weatherData;
   dynamic day_1Data;
   dynamic day_2Data;
@@ -43,11 +44,13 @@ class _MainScreenState extends State<MainScreen> {
     temperature =
         (locationWeather["location"]["currentConditions"]["temp"]).toInt();
     // cityName = locationWeather["name"];
-
     hummidity =
         (locationWeather["location"]["currentConditions"]["humidity"]).toInt();
     windSpeeed =
         (locationWeather["location"]["currentConditions"]["wspd"]).toInt();
+    weatherIcon = locationWeather["location"]["currentConditions"]["icon"];
+
+
   }
 
   @override
@@ -87,13 +90,14 @@ class _MainScreenState extends State<MainScreen> {
                           fontSize: 130,
                           fontWeight: FontWeight.bold),
                     ),
-                    const Opacity(
+                    Opacity(
                       opacity: 0.7,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 80.0, top: 80.0),
+                        padding: const EdgeInsets.only(left: 80.0, top: 80.0),
                         child: Image(
                             height: 100,
-                            image: AssetImage('assets/icons/cloudy.png')),
+                            image: AssetImage(
+                                'assets/icons/${weatherIcon.toLowerCase()}.png')),
                       ),
                     )
                   ],

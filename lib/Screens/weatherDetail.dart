@@ -72,9 +72,9 @@ class _WeatherDetailState extends State<WeatherDetail> {
                       children: [
                         Row(
                           children: [
-                            const Image(
+                            Image(
                               image: AssetImage(
-                                "assets/icons/cloudy.png",
+                                "assets/icons/${day2["icon"]}.png",
                               ),
                               height: 130,
                             ),
