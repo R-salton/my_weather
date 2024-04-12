@@ -3,8 +3,9 @@
 A Weather app Flutter project.
 
 <img src="https://github.com/R-salton/my_weather/assets/84921448/f972ef62-5d39-43ec-9ef0-bd169dd736f2" width="400" height="790">
-<img src="[https://github.com/R-salton/my_weather/assets/84921448/f972ef62-5d39-43ec-9ef0-bd169dd736f2](https://github.com/R-salton/my_weather/assets/84921448/c646a186-fb37-4406-b000-7a999f8e688e)" width="400" height="790">
-[screencast-Genymotion-2024-04-12_23.19.58.657.webm](https://github.com/R-salton/my_weather/assets/84921448/008272cb-8574-49a7-8f1d-0ca015ee3985)
+<img src="https://github.com/R-salton/my_weather/assets/84921448/f972ef62-5d39-43ec-9ef0-bd169dd736f2](https://github.com/R-salton/my_weather/assets/84921448/c646a186-fb37-4406-b000-7a999f8e688e)" width="400" height="790">
+<img src="https://github.com/R-salton/my_weather/assets/84921448/b28dcc92-5a4c-4626-aee2-62a3caee1abd" width="400" height="790">
+
 
 
 
