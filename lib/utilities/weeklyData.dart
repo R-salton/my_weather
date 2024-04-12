@@ -16,7 +16,7 @@ class WeeklyData {
       // cityName = locationWeather["city"]["name"];
       "minTemperature": (weatherData["list"][0]["main"]["temp_min"]).toInt(),
       "maxTemperature": (weatherData["list"][0]["main"]["temp_max"]).toInt(),
-      "condition": weatherData["list"][0]["weather"][0]["main"],
+      "condition": weatherData["list"][0]["weather"][0]["description"],
       "weekDay": weatherData["list"][0]["dt_txt"],
       "temp": (weatherData["list"][0]["main"]["temp"]).toInt(),
       "icon": weatherData["list"][0]["weather"][0]["icon"],
@@ -32,7 +32,7 @@ class WeeklyData {
     Map<String, dynamic> data = {
       "minTemperature": (weatherData["list"][1]["main"]["temp_min"]).toInt(),
       "maxTemperature": (weatherData["list"][1]["main"]["temp_max"]).toInt(),
-      "condition": weatherData["list"][1]["weather"][0]["main"],
+      "condition": weatherData["list"][1]["weather"][0]["description"],
       "weekDay": weatherData["list"][1]["dt_txt"],
       "temp": (weatherData["list"][1]["main"]["temp"]).toInt(),
       "icon": weatherData["list"][1]["weather"][0]["icon"],
@@ -48,7 +48,7 @@ class WeeklyData {
     Map<String, dynamic> data = {
       "minTemperature": (weatherData["list"][2]["main"]["temp_min"]).toInt(),
       "maxTemperature": (weatherData["list"][2]["main"]["temp_max"]).toInt(),
-      "condition": weatherData["list"][2]["weather"][0]["main"], 
+      "condition": weatherData["list"][2]["weather"][0]["description"],
       "weekDay": weatherData["list"][2]["dt_txt"],
       "temp": (weatherData["list"][2]["main"]["temp"]).toInt(),
       "icon": weatherData["list"][2]["weather"][0]["icon"],
@@ -64,7 +64,7 @@ class WeeklyData {
     Map<String, dynamic> data = {
       "minTemperature": (weatherData["list"][3]["main"]["temp_min"]).toInt(),
       "maxTemperature": (weatherData["list"][3]["main"]["temp_max"]).toInt(),
-      "condition": weatherData["list"][3]["weather"][0]["main"],
+      "condition": weatherData["list"][3]["weather"][0]["description"],
       "weekDay": weatherData["list"][3]["dt_txt"],
       "temp": (weatherData["list"][3]["main"]["temp"]).toInt(),
       "icon": weatherData["list"][3]["weather"][0]["icon"],
@@ -80,7 +80,7 @@ class WeeklyData {
     Map<String, dynamic> data = {
       "minTemperature": (weatherData["list"][4]["main"]["temp_min"]).toInt(),
       "maxTemperature": (weatherData["list"][4]["main"]["temp_max"]).toInt(),
-      "condition": weatherData["list"][4]["weather"][0]["main"], 
+      "condition": weatherData["list"][4]["weather"][0]["description"], 
       "weekDay": weatherData["list"][4]["dt_txt"],
       "temp": (weatherData["list"][4]["main"]["temp"]).toInt(),
       "icon": weatherData["list"][4]["weather"][0]["icon"],

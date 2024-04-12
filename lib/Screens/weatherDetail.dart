@@ -262,9 +262,9 @@ class WeeklyForecast extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 5,
             child: Container(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 8, right: 8),
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: Row(
@@ -301,7 +301,7 @@ class WeeklyForecast extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 10,
+            width: 5,
           ),
           Expanded(
             child: Text(
