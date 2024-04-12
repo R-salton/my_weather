@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:my_weather/utilities/constants.dart';
 import 'package:my_weather/utilities/custom_widgets.dart';
 import 'package:my_weather/utilities/weatherInfos.dart';
-import 'package:my_weather/utilities/weeklyData.dart';
 
+// ignore: must_be_immutable
 class WeatherDetail extends StatefulWidget {
   WeatherDetail(
       {super.key, this.day1, this.day2, this.day3, this.day4, this.day5});
@@ -37,7 +35,6 @@ class _WeatherDetailState extends State<WeatherDetail> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     day1 = widget.day1;
@@ -45,9 +42,6 @@ class _WeatherDetailState extends State<WeatherDetail> {
     day3 = widget.day3;
     day4 = widget.day3;
     day5 = widget.day4;
-
-    print(day1);
-    print(day2);
   }
 
   @override

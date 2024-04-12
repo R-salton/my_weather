@@ -10,9 +10,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 var apiKey = dotenv.env['API_KEY'];
 const openWeathermapUrl = "https://api.openweathermap.org/data/2.5/forecast";
 
-// -1.9508938,30.0588764&forecastDays=7&key=VJCWKL7CVRHRMR3PLPTNZDMKF
-// https://api.openweathermap.org/data/2.5/forecast?lat=-1.9508938&lon=30.0588764&units=metric&cnt=5&appid=3fb0e15fc04f71d2f53b1f9510f5efb3
-
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
