@@ -5,11 +5,14 @@ import 'package:my_weather/utilities/custom_widgets.dart';
 import 'package:my_weather/utilities/weatherInfos.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, this.weatherData, this.day1, this.day2});
+  const MainScreen({super.key, this.weatherData, this.day1, this.day2, this.day3,this.day4,this.day5});
 
   final weatherData;
   final day1;
   final day2;
+  final day3;
+  final day4;
+  final day5;
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -24,6 +27,9 @@ class _MainScreenState extends State<MainScreen> {
   dynamic weatherData;
   dynamic day_1Data;
   dynamic day_2Data;
+  dynamic day_3Data;
+  dynamic day_4Data;
+  dynamic day_5Data;
 
   final time = DateTime.now();
 
@@ -36,6 +42,9 @@ class _MainScreenState extends State<MainScreen> {
     weatherData = widget.weatherData;
     day_1Data = widget.day1;
     day_2Data = widget.day2;
+    day_3Data = widget.day3;
+    day_4Data = widget.day4;
+    day_4Data = widget.day5;
     print(time.year);
   }
 
@@ -152,6 +161,10 @@ class _MainScreenState extends State<MainScreen> {
                               return WeatherDetail(
                                 day1: day_1Data,
                                 day2: day_2Data,
+                                day3: day_3Data,
+                                day4: day_4Data,
+                                day5: day_5Data,
+                                
                               );
                             }),
                           );

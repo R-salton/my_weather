@@ -7,9 +7,13 @@ import 'package:my_weather/utilities/weatherInfos.dart';
 import 'package:my_weather/utilities/weeklyData.dart';
 
 class WeatherDetail extends StatefulWidget {
-  WeatherDetail({super.key, this.day1, this.day2});
+  WeatherDetail(
+      {super.key, this.day1, this.day2, this.day3, this.day4, this.day5});
   dynamic day1;
   dynamic day2;
+  dynamic day3;
+  dynamic day4;
+  dynamic day5;
 
   @override
   State<WeatherDetail> createState() => _WeatherDetailState();
@@ -20,6 +24,16 @@ class _WeatherDetailState extends State<WeatherDetail> {
 
   dynamic day1;
   dynamic day2;
+  dynamic day3;
+  dynamic day4;
+  dynamic day5;
+
+// get Name of The day
+  String weekDay(String time) {
+    var dayNumber = DateTime.parse(time).weekday;
+    var nameOfDay = getDay(dayNumber);
+    return nameOfDay;
+  }
 
   @override
   void initState() {
@@ -28,6 +42,9 @@ class _WeatherDetailState extends State<WeatherDetail> {
 
     day1 = widget.day1;
     day2 = widget.day2;
+    day3 = widget.day3;
+    day4 = widget.day3;
+    day5 = widget.day4;
 
     print(day1);
     print(day2);
@@ -132,12 +149,12 @@ class _WeatherDetailState extends State<WeatherDetail> {
                             comment: "Precipitation",
                           ),
                           weatherWithImage(
-                            data: "23°",
+                            data: "${day2["hummidity"]}°",
                             comment: "Hummidity",
                             imageUrl: "assets/icons/drop.png",
                           ),
                           weatherWithImage(
-                            data: "9km/h",
+                            data: "${day2["windSpeed"]}km/h",
                             comment: "Wind speed",
                             imageUrl: "assets/icons/wind.png",
                           )
@@ -152,74 +169,57 @@ class _WeatherDetailState extends State<WeatherDetail> {
               ),
               MyContainer(
                 paddingTop: 10,
-                child: const Column(
+                child: Column(
                   children: [
                     WeeklyForecast(
-                      comment: "Raining",
-                      iconImage: "assets/icons/raining.png",
-                      tempDown: 19,
-                      temperature: 18,
-                      day: "Mona",
+                      comment: "${day1["condition"]}",
+                      iconImage: day1["icon"],
+                      tempDown: day1["minTemperature"],
+                      temperature: day1["maxTemperature"],
+                      day: weekDay(day1["weekDay"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     WeeklyForecast(
-                      comment: "Sunny",
-                      iconImage: "assets/icons/sunny.png",
-                      tempDown: 6,
-                      temperature: 19,
-                      day: "Tuesday",
+                      comment: "${day2["condition"]}",
+                      iconImage: day2["icon"],
+                      tempDown: day2["minTemperature"],
+                      temperature: day2["maxTemperature"],
+                      day: weekDay(day2["weekDay"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     WeeklyForecast(
-                      comment: "Cloudy",
-                      iconImage: "assets/icons/cloudy.png",
-                      tempDown: 10,
-                      temperature: 15,
-                      day: "Wednesday",
+                      comment: "${day3["condition"]}",
+                      iconImage: day3["icon"],
+                      tempDown: day3["minTemperature"],
+                      temperature: day3["maxTemperature"],
+                      day: weekDay(day3["weekDay"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     WeeklyForecast(
-                      comment: "Sunny",
-                      iconImage: "assets/icons/sunny.png",
-                      tempDown: 12,
-                      temperature: 8,
-                      day: "Thursday",
+                      comment: "${day4["condition"]}",
+                      iconImage: day4["icon"],
+                      tempDown: day4["minTemperature"],
+                      temperature: day4["maxTemperature"],
+                      day: weekDay(day4["weekDay"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     WeeklyForecast(
-                      comment: "Raining",
-                      iconImage: "assets/icons/raining.png",
-                      tempDown: 6,
-                      temperature: 12,
-                      day: "Friday",
+                      comment: "${day5["condition"]}",
+                      iconImage: day5["icon"],
+                      tempDown: day5["minTemperature"],
+                      temperature: day5["maxTemperature"],
+                      day: weekDay(day5["weekDay"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
-                    ),
-                    WeeklyForecast(
-                      comment: "Sunny",
-                      iconImage: "assets/icons/sunny.png",
-                      tempDown: 6,
-                      temperature: 19,
-                      day: "Tuesday",
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    WeeklyForecast(
-                      comment: "Sunny",
-                      iconImage: "assets/icons/sunny.png",
-                      tempDown: 6,
-                      temperature: 19,
-                      day: "Tuesday",
                     ),
                   ],
                 ),
@@ -272,7 +272,7 @@ class WeeklyForecast extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image(
-                    image: AssetImage("$iconImage"),
+                    image: NetworkImage("$kImageUrl$iconImage.png", scale: 0.3),
                     height: 50,
                     width: 50,
                   ),

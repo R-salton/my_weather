@@ -26,6 +26,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   dynamic day1;
   dynamic day2;
+  dynamic day3;
+  dynamic day4;
+  dynamic day5;
+
   String? weekDay;
 
   @override
@@ -56,7 +60,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
           return MainScreen(
             weatherData: weatherData,
             day1: day1,
-            day2 : day2
+            day2 : day2,
+            day3 : day3,
+            day4 : day4,
+            day5 : day5,
           );
         },
       ),
@@ -68,6 +75,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WeeklyData weeklydata = WeeklyData(weatherData: weatherInfo);
     day1 = await weeklydata.day1();
     day2 = await weeklydata.day2();
+    day3 = await weeklydata.day3();
+    day4 = await weeklydata.day4();
+    day5 = await weeklydata.day5();
     // print(day1);
     // weekDay = getDay(DateTime.parse(day1['weekDay']).weekday);
   }
