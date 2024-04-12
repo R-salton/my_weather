@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 
 class WeatherBrain {
+
+
   // Get Current Location weather
   Future<dynamic> getCurrentWeather(String url) async {
     try {
@@ -18,4 +20,6 @@ class WeatherBrain {
       print(e);
     }
   }
+
+  
 }

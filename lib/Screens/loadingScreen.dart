@@ -6,13 +6,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:my_weather/utilities/Weather.dart';
 import 'package:my_weather/utilities/weeklyData.dart';
 
-const apiKey = "VJCWKL7CVRHRMR3PLPTNZDMKF";
-const openWeathermapUrl =
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?iconSet=icons1&aggregateHours=24&combinationMethod=aggregate&shortColumnNames=true&contentType=json&unitGroup=metric&locationMode=single&locations=";
+const apiKey = "3fb0e15fc04f71d2f53b1f9510f5efb3";
+const openWeathermapUrl = "https://api.openweathermap.org/data/2.5/forecast";
 
 // -1.9508938,30.0588764&forecastDays=7&key=VJCWKL7CVRHRMR3PLPTNZDMKF
+// https://api.openweathermap.org/data/2.5/forecast?lat=-1.9508938&lon=30.0588764&units=metric&cnt=5&appid=3fb0e15fc04f71d2f53b1f9510f5efb3
 
-// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/38.9697,-77.385?key=VJCWKL7CVRHRMR3PLPTNZDMKF
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -44,7 +43,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     longtude = position.longitude;
     latitude = position.latitude;
     String url =
-        "$openWeathermapUrl$latitude,$longtude&forecastDays=7&key=$apiKey";
+        "$openWeathermapUrl?lat=$latitude&lon=$longtude&units=metric&cnt=5&appid=$apiKey";
 
     var weatherData = await weatherBrain.getCurrentWeather(url);
     // print(weatherData);

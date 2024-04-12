@@ -40,17 +40,12 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void updateUI(dynamic locationWeather) {
-    comment = locationWeather["location"]["values"][0]["conditions"];
-    temperature =
-        (locationWeather["location"]["currentConditions"]["temp"]).toInt();
-    // cityName = locationWeather["name"];
-    hummidity =
-        (locationWeather["location"]["currentConditions"]["humidity"]).toInt();
-    windSpeeed =
-        (locationWeather["location"]["currentConditions"]["wspd"]).toInt();
-    weatherIcon = locationWeather["location"]["currentConditions"]["icon"];
-
-
+    comment = locationWeather["list"][0]["weather"][0]["description"];
+    temperature = (locationWeather["list"][0]["main"]["temp"]).toInt();
+    hummidity = (locationWeather["list"][0]["main"]["humidity"]).toInt();
+    windSpeeed = (locationWeather["list"][0]["wind"]["speed"]).toInt();
+    weatherIcon = locationWeather["list"][0]["weather"][0]["icon"];
+    cityName = locationWeather["city"]["name"];
   }
 
   @override
@@ -91,13 +86,15 @@ class _MainScreenState extends State<MainScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     Opacity(
-                      opacity: 0.7,
+                      opacity: 0.9,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 80.0, top: 80.0),
                         child: Image(
-                            height: 100,
-                            image: AssetImage(
-                                'assets/icons/${weatherIcon.toLowerCase()}.png')),
+                          height: 100,
+                          image: NetworkImage(
+                              'http://openweathermap.org/img/w/$weatherIcon.png',
+                              scale: 0.01),
+                        ),
                       ),
                     )
                   ],

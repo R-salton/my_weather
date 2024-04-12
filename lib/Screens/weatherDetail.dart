@@ -73,9 +73,9 @@ class _WeatherDetailState extends State<WeatherDetail> {
                         Row(
                           children: [
                             Image(
-                              image: AssetImage(
-                                "assets/icons/${day2["icon"]}.png",
-                              ),
+                              image: NetworkImage(
+                                  "$kImageUrl${day1["icon"]}.png",
+                                  scale: 0.1),
                               height: 130,
                             ),
                             Column(
@@ -102,18 +102,18 @@ class _WeatherDetailState extends State<WeatherDetail> {
                         Padding(
                           padding: const EdgeInsets.only(left: 50, top: 80),
                           child: Text(
-                            "${day2["temp"].toInt()}°",
+                            "${day2["maxTemperature"].toInt()}°",
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 70,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 130, top: 120),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 130, top: 120),
                           child: Text(
-                            "/15°",
-                            style: TextStyle(
+                            "/${day2["minTemperature"]}°",
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold),
